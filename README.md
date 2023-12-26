@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Frontend test task for Ivelium
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Test & Deploy](https://github.com/arvitaly/ivelium-frontend-test-task/actions/workflows/github-static-page.yaml/badge.svg)
 
-Currently, two official plugins are available:
+Task description: https://github.com/ivelum/job/blob/master/challenges/frontend.md
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tech stack: Vite.js + React + Apollo + Antd
 
-## Expanding the ESLint configuration
+[Demo App](https://ivelium-frontend-test-task.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+https://github.com/arvitaly/ivelium-frontend-test-task/assets/2562855/6fa48ebb-6e96-49e8-8fea-46d2d4c1291a
 
-- Configure the top-level `parserOptions` property like this:
+## Usage
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+[How to obtain Github API Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+## Run locally
+
+```sh
+npm install
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Development
+
+App use the graphql code generation via `@graphql-codegen`.
+
+Command to run the graphql compilator with wather:
+
+```sh
+npm run graphql:watch
+```
+
+For graphql type-checking, install [Apollo VSCode Extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo)
+
+## Tests
+
+```sh
+npm test
+```
