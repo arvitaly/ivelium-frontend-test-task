@@ -67,7 +67,7 @@ const LoginPage = () => {
       }}
     >
       <Form
-        name="basic"
+        name="login"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
@@ -81,7 +81,7 @@ const LoginPage = () => {
           name="token"
           rules={[{ required: true, message: "Please input token!" }]}
         >
-          <Input.Password />
+          <Input.Password data-testid="login-token" />
         </Form.Item>
 
         <Form.Item<FieldType>
@@ -93,7 +93,12 @@ const LoginPage = () => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button loading={loading} type="primary" htmlType="submit">
+          <Button
+            data-testid="login-submit"
+            loading={loading}
+            type="primary"
+            htmlType="submit"
+          >
             Check &amp; Save
           </Button>
         </Form.Item>
