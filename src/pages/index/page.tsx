@@ -15,8 +15,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 import { createElement, useEffect, useState } from "react";
 import { StarFilled } from "@ant-design/icons";
-import { onApolloError } from "../../util/apollo";
 import { formatLink } from "../../util/router";
+import useErrorHandler from "../../hooks/useErrorHandler";
 
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
@@ -55,6 +55,7 @@ const IndexPage = () => {
   const [count, setCount] = useState(DEFAULT_PAGE_SIZE);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Search_QueryQuery | null>(null);
+  const onError = useErrorHandler();
 
   useEffect(() => {
     if (!q) {
@@ -72,9 +73,9 @@ const IndexPage = () => {
         },
       })
       .then((d) => setData(d.data))
-      .catch(onApolloError)
+      .catch(onError)
       .finally(() => setLoading(false));
-  }, [client, count, q]);
+  }, [client, count, onError, q]);
 
   const hasMore =
     !data ||

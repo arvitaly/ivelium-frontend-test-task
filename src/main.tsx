@@ -19,6 +19,7 @@ if (import.meta.env.DEV) {
 const router = createBrowserRouter([
   {
     path: import.meta.env.BASE_URL,
+    shouldRevalidate: () => false,
     element: <App />,
     children: [
       {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <AuthApp />,
+        shouldRevalidate: () => false,
         children: [
           {
             path: "",
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
           },
 
           {
-            path: "repo/:ownerName/:repoName",
+            path: "repo/:ownerName/:repoName/:objectType?/:ref?/:objectName?/*",
             element: <RepoPage />,
           },
         ],

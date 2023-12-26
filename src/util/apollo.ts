@@ -9,8 +9,3 @@ export const createApolloClient = (token: string) => {
     },
   });
 };
-
-export const onApolloError = (e: unknown) => {
-    console.error(e);
-    
-};

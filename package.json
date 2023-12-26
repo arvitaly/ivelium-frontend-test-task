@@ -14,12 +14,14 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@apollo/client": "^3.8.8",
+    "@types/react-syntax-highlighter": "^15.5.11",
     "antd": "^5.12.5",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",

@@ -27,6 +27,18 @@ const AuthApp = () => {
           }}
         >
           <Menu
+            theme="dark"
+            mode="horizontal"
+            style={{ flex: 1, display: "flex", justifyContent: "flex-start" }}
+            activeKey=""
+            items={[
+              {
+                key: "home",
+                label: <Link to={formatLink("/")}>Search repo</Link>,
+              },
+            ]}
+          ></Menu>
+          <Menu
             style={{
               display: "flex",
               alignItems: "center",
@@ -44,7 +56,7 @@ const AuthApp = () => {
             ]}
           />
         </Layout.Header>
-        <Layout.Content style={{ width: "600px", margin: "30px auto" }}>
+        <Layout.Content style={{ width: "100%", padding: "30px 50px" }}>
           <Outlet />
         </Layout.Content>
       </Layout>
