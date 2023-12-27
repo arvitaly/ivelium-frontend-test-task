@@ -18,6 +18,8 @@ import { StarFilled } from "@ant-design/icons";
 import { formatLink } from "../../util/router";
 import useErrorHandler from "../../hooks/useErrorHandler";
 
+import "./page.css";
+
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
     {createElement(icon)}
@@ -112,6 +114,7 @@ const IndexPage = () => {
           <div style={{ textAlign: "center" }}>
             <Button
               type="primary"
+              loading={loading}
               style={{
                 margin: "20px auto",
                 display: data && hasMore ? "block" : "none",
@@ -123,9 +126,9 @@ const IndexPage = () => {
           </div>
         }
         endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
-        scrollableTarget="scrollableDiv"
       >
         <List<Repository>
+          className={"repo-list"}
           loading={loading}
           itemLayout="horizontal"
           dataSource={(data?.search.nodes as Repository[]) || []}

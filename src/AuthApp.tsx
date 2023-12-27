@@ -19,7 +19,7 @@ const AuthApp = () => {
 
   return (
     <ApolloProvider client={client}>
-      <Layout style={{ minHeight: "100%" }}>
+      <Layout style={{ minHeight: "100vh" }}>
         <Layout.Header
           style={{
             display: "flex",
