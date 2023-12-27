@@ -1,13 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAYAAACB4MgqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAScSURBVHgB7Vm9TxtLEJ+zz5zhOQYcqkf5utdSJ1SAkACJgm+BQEJIICgpEULUFAgKBA3iS4CgAQRCokpPyV8QEaGIJArG2PjrMr+V1znfrYMxZyJH+Unr292b2ZudmZ3ZXRMVgNnZWZ0fKZRM/UlomhbzeDw3VCIUJEQGHnoevEXwuIYgay1sGEb49PTUREGd+z6qiIeHh/2gRzk5OTF3d3dN1H0+32dyGU9qPJ1OB1KpFLHAos0uEGBhkkNDQ34FOQQPiIrfT4lEQvAzj5dcxnNcRWBgYIAeHx9r1tfXo47BdJ0GBwfpNfDbfPClyKtxNnmUfdPX39+PerYfbbgAv3IOxhrv7e3NtuFeIyMjxK5Wubm5mUTf3t6e0d3dnaJSCW6aJvzSNd/MjOcatLwvNC0eCAR8BwcHog1tWpFMJpV8KjpYqK2tTbT39/d1NzTu8PGpqSkDBQJYCz6OYhVQVSQkvf391dWVGJ9eCN0u9NLSUgx1jsnZEAitjY+Pi/rKyopDqypMTExQVVUVLS4uijUio838/HyEQ+QXrtbRC/DnRRVED0Mz6d3XKzJ5KaytrYl+9v0sDS84Ghsbo2AwSAsLCzn8q6urpKeT9J7508zj4fgPcHRBUqKSCQ4BIaPGYpuUK7AVEB5FxQ8X0cS08/MXi186a4Iz9Yfa/x390WiUpqenhTDLy8t0d3dHk5OTYk1YNZ+P3w1kBWeT+zhR+KzJBkhq6mWABQta7Eni8bhoe73OUG3nBw1cZXR0VGQwdqkEFQFhv/r6+rfX19e31r0G9iRumxfY3t7GXkc8eeJxnkRRobFso8pfwV8bOT6OqMCnHCo1IpEIdXR0/PXxskL5+jj7WYSTiKerq0scfuXOr6+vryRxnE/+IgEhYeHJ8TzG3/zESew/Oy3vgUL39/fX1r6ZmZl/5ubm0joz+7l4ZMZUZT83gfGhEAidefo5YztuDOrq6t5wf6CysjLnHU80wO9M3T5oT08PlRJsWbFF4JPQL+lub2+/VVdXe4+OjnL6m5ubv/OEElnB5W7utfCUGyJUcvGyRSpU9GilampqPIeHh/TagLs0NTXB0p9Yi/X29/Bx3nl+gSfwBZTo4/scbKMT5X0CisVitLOzk/MCUYVXtPBJ3KEcHx/Tc4F9Op/oc/hlVAFUBxAVoHGcyICNjQ3c0/zcj8vB7Bc9OKlbP/Dw8CCeOAirYH9vvRmQQsBf7eM2NDQ4Bry5ualC2KyoqHCsv2dHlc7OTjGQygKwXHt7u6hfXFwo+VVRhTX47+XlZcROy1Elr6V1nn0Cq5dnLyYhtVCK5GOFPKsW+h2LXEnIrHOHv7a29i2vVnECgv8AA5lTeSkAN0F0gPnzWWZrayt7rwMLtba2ijr/I2Igc5b3fhzgGRmhUMjg29TvaMvUj/MhLHF+fi7aLS0tYp8htWEH6AFoMhwOizUB2OklXb5xpOUhB5eHxsbGENpnZ2eCMbs40cFXcIguYbQtlzZv8IOFZwWbO0xqCHpcYVh57PQyStijjh2Qg0tEClwoglxMRfmmIsZ/QCp6aIxcRiF/paQL7CuWvij8AL1XKynfbgyaAAAAAElFTkSuQmCC">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAYAAACB4MgqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAScSURBVHgB7Vm9TxtLEJ+zz5zhOQYcqkf5utdSJ1SAkACJgm+BQEJIICgpEULUFAgKBA3iS4CgAQRCokpPyV8QEaGIJArG2PjrMr+V1znfrYMxZyJH+Unr292b2ZudmZ3ZXRMVgNnZWZ0fKZRM/UlomhbzeDw3VCIUJEQGHnoevEXwuIYgay1sGEb49PTUREGd+z6qiIeHh/2gRzk5OTF3d3dN1H0+32dyGU9qPJ1OB1KpFLHAos0uEGBhkkNDQ34FOQQPiIrfT4lEQvAzj5dcxnNcRWBgYIAeHx9r1tfXo47BdJ0GBwfpNfDbfPClyKtxNnmUfdPX39+PerYfbbgAv3IOxhrv7e3NtuFeIyMjxK5Wubm5mUTf3t6e0d3dnaJSCW6aJvzSNd/MjOcatLwvNC0eCAR8BwcHog1tWpFMJpV8KjpYqK2tTbT39/d1NzTu8PGpqSkDBQJYCz6OYhVQVSQkvf391dWVGJ9eCN0u9NLSUgx1jsnZEAitjY+Pi/rKyopDqypMTExQVVUVLS4uijUio838/HyEQ+QXrtbRC/DnRRVED0Mz6d3XKzJ5KaytrYl+9v0sDS84Ghsbo2AwSAsLCzn8q6urpKeT9J7508zj4fgPcHRBUqKSCQ4BIaPGYpuUK7AVEB5FxQ8X0cS08/MXi186a4Iz9Yfa/x390WiUpqenhTDLy8t0d3dHk5OTYk1YNZ+P3w1kBWeT+zhR+KzJBkhq6mWABQta7Eni8bhoe73OUG3nBw1cZXR0VGQwdqkEFQFhv/r6+rfX19e31r0G9iRumxfY3t7GXkc8eeJxnkRRobFso8pfwV8bOT6OqMCnHCo1IpEIdXR0/PXxskL5+jj7WYSTiKerq0scfuXOr6+vryRxnE/+IgEhYeHJ8TzG3/zESew/Oy3vgUL39/fX1r6ZmZl/5ubm0joz+7l4ZMZUZT83gfGhEAidefo5YztuDOrq6t5wf6CysjLnHU80wO9M3T5oT08PlRJsWbFF4JPQL+lub2+/VVdXe4+OjnL6m5ubv/OEElnB5W7utfCUGyJUcvGyRSpU9GilampqPIeHh/TagLs0NTXB0p9Yi/X29/Bx3nl+gSfwBZTo4/scbKMT5X0CisVitLOzk/MCUYVXtPBJ3KEcHx/Tc4F9Op/oc/hlVAFUBxAVoHGcyICNjQ3c0/zcj8vB7Bc9OKlbP/Dw8CCeOAirYH9vvRmQQsBf7eM2NDQ4Bry5ualC2KyoqHCsv2dHlc7OTjGQygKwXHt7u6hfXFwo+VVRhTX47+XlZcROy1Elr6V1nn0Cq5dnLyYhtVCK5GOFPKsW+h2LXEnIrHOHv7a29i2vVnECgv8AA5lTeSkAN0F0gPnzWWZrayt7rwMLtba2ijr/I2Igc5b3fhzgGRmhUMjg29TvaMvUj/MhLHF+fi7aLS0tYp8htWEH6AFoMhwOizUB2OklXb5xpOUhB5eHxsbGENpnZ2eCMbs40cFXcIguYbQtlzZv8IOFZwWbO0xqCHpcYVh57PQyStijjh2Qg0tEClwoglxMRfmmIsZ/QCp6aIxcRiF/paQL7CuWvij8AL1XKynfbgyaAAAAAElFTkSuQmCC"
+    />
     <title>Ivelium frontend test task (c) Arvitaly</title>
   </head>
   <body>
     <div id="root"></div>
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
     <script type="module" src="src/main.tsx"></script>
   </body>
 </html>
