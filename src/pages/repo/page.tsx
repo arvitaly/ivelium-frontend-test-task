@@ -13,12 +13,13 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { gql } from "../../__generated__";
 import { useQuery } from "@apollo/client";
-import { Blob, Tree, TreeEntry } from "../../__generated__/graphql";
+import { Blob, Commit, Tree, TreeEntry } from "../../__generated__/graphql";
 import { FileFilled, FolderFilled } from "@ant-design/icons";
 import { formatLink } from "../../util/router";
 import { useMemo } from "react";
 import DownloadBlob from "./download-blob";
 import SelectRef from "./select-ref";
+import RepoHeader from "./header";
 
 const REPO_QUERY = gql(`
   query REPO_QUERY ($name: String!, $owner: String!, $expression: String!, $ref: String!, $refExists: Boolean!) {
@@ -37,6 +38,7 @@ const REPO_QUERY = gql(`
                 date                
               }
               message
+              committedDate
               oid
             }
           }
@@ -52,6 +54,7 @@ const REPO_QUERY = gql(`
                 date                
               }
               message
+              committedDate
               oid
             }
           }
@@ -135,9 +138,11 @@ const RepoPage = () => {
   }
 
   const gitobj = data?.repository?.object;
+  const commit = (data?.repository?.ref?.target ||
+    data?.repository?.defaultBranchRef?.target) as Commit;
 
   return (
-    <div>
+    <div style={{ maxWidth: "1000px" }}>
       <Row>
         <Col span={24}>
           <div
@@ -186,7 +191,7 @@ const RepoPage = () => {
         </Col>
       </Row>
       <Row style={{ marginTop: "20px" }}>
-        <Col span={24} style={{ maxWidth: "1000px" }}>
+        <Col span={24}>
           {!gitobj && <Empty description="Not found object" />}
           {gitobj &&
             params.objectType === "blob" &&
@@ -200,7 +205,15 @@ const RepoPage = () => {
           {gitobj && (params.objectType === "tree" || !params.objectType) && (
             <List<TreeEntry>
               size="small"
-              header={<div>Header</div>}
+              header={
+                <RepoHeader
+                  avatar={commit.author?.avatarUrl || ""}
+                  commitMessage={commit.message}
+                  commitHash={commit.oid}
+                  commitDate={commit.committedDate}
+                  login={commit.author?.name || ""}
+                />
+              }
               bordered
               dataSource={(gitobj as Tree).entries || []}
               renderItem={(item) => (
