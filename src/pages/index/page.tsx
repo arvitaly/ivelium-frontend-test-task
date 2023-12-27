@@ -58,6 +58,7 @@ const IndexPage = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Search_QueryQuery | null>(null);
   const onError = useErrorHandler();
+  const [searchId, setSearchId] = useState(0);
 
   useEffect(() => {
     if (!q) {
@@ -65,6 +66,8 @@ const IndexPage = () => {
     }
 
     setLoading(true);
+
+    const startTime = new Date().getTime();
 
     client
       .query({
@@ -76,8 +79,16 @@ const IndexPage = () => {
       })
       .then((d) => setData(d.data))
       .catch(onError)
-      .finally(() => setLoading(false));
-  }, [client, count, onError, q]);
+      .finally(async () => {
+        await new Promise<void>((resolve) =>
+          setTimeout(
+            resolve,
+            Math.max(0, 400 - (new Date().getTime() - startTime))
+          )
+        );
+        setLoading(false);
+      });
+  }, [client, count, onError, q, searchId]);
 
   const hasMore =
     !data ||
@@ -95,7 +106,7 @@ const IndexPage = () => {
         >
           <Input.Search
             onSearch={(value) => {
-              setData(null);
+              setSearchId(new Date().getTime());
               setCount(10);
               setQ(value);
             }}
