@@ -1,4 +1,4 @@
-import { Avatar, Space, Typography } from "antd";
+import { Avatar, Typography } from "antd";
 import moment from "moment";
 type RepoHeaderProps = {
   avatar: string;
