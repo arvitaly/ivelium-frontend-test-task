@@ -121,11 +121,9 @@ const RepoPage = () => {
         title: chunk,
         href: `${baseRepoHref}/${
           index === chunks.length - 1 ? "blob" : "tree"
-        }/${encodeURIComponent(refName)}/${
-          curPath ? curPath + "/" : ""
-        }${chunk}`,
+        }/${encodeURIComponent(refName)}/${curPath}${chunk}`,
       });
-      curPath += chunk;
+      curPath += chunk + "/";
     }
     return pathChunks;
   }, [baseRepoHref, fullpath, refName]);
