@@ -2,3 +2,9 @@
   top: auto !important;
   bottom: 0;
 }
+
+.repo-list .ant-list-item-action {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}
