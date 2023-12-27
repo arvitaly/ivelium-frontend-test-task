@@ -16,19 +16,46 @@ const RepoHeader = ({
   commitDate,
 }: RepoHeaderProps) => {
   return (
-    <Space style={{ justifyContent: "space-between", width: "100%" }}>
-      <Space>
-        <Avatar src={avatar} />
+    <div
+      style={{
+        justifyContent: "space-between",
+        width: "100%",
+        whiteSpace: "nowrap",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          gap: "7px",
+          alignItems: "center",
+          maxWidth: "calc(100% - 200px)",
+        }}
+      >
+        <Avatar src={avatar} style={{ flex: 1, maxWidth: "30px" }} />
         <Typography.Text>{login}</Typography.Text>
-        <Typography.Text type="secondary">{commitMessage}</Typography.Text>
-      </Space>
-      <Space>
+        <Typography.Text
+          type="secondary"
+          style={{ overflow: "hidden", flex: 1, textOverflow: "ellipsis" }}
+          title={commitMessage}
+        >
+          {commitMessage}
+        </Typography.Text>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          gap: "7px",
+          alignItems: "center",
+        }}
+      >
         <Typography.Text code>{commitHash.substring(0, 8)}</Typography.Text>
         <Typography.Text type="secondary">
           {moment(commitDate).fromNow()}
         </Typography.Text>
-      </Space>
-    </Space>
+      </div>
+    </div>
   );
 };
 

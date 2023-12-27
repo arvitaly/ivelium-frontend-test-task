@@ -18,6 +18,8 @@ import { StarFilled } from "@ant-design/icons";
 import { formatLink } from "../../util/router";
 import useErrorHandler from "../../hooks/useErrorHandler";
 
+import "./page.css";
+
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
     {createElement(icon)}
@@ -56,6 +58,7 @@ const IndexPage = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Search_QueryQuery | null>(null);
   const onError = useErrorHandler();
+  const [searchId, setSearchId] = useState(0);
 
   useEffect(() => {
     if (!q) {
@@ -63,6 +66,8 @@ const IndexPage = () => {
     }
 
     setLoading(true);
+
+    const startTime = new Date().getTime();
 
     client
       .query({
@@ -74,8 +79,16 @@ const IndexPage = () => {
       })
       .then((d) => setData(d.data))
       .catch(onError)
-      .finally(() => setLoading(false));
-  }, [client, count, onError, q]);
+      .finally(async () => {
+        await new Promise<void>((resolve) =>
+          setTimeout(
+            resolve,
+            Math.max(0, 400 - (new Date().getTime() - startTime))
+          )
+        );
+        setLoading(false);
+      });
+  }, [client, count, onError, q, searchId]);
 
   const hasMore =
     !data ||
@@ -93,7 +106,7 @@ const IndexPage = () => {
         >
           <Input.Search
             onSearch={(value) => {
-              setData(null);
+              setSearchId(new Date().getTime());
               setCount(10);
               setQ(value);
             }}
@@ -112,6 +125,7 @@ const IndexPage = () => {
           <div style={{ textAlign: "center" }}>
             <Button
               type="primary"
+              loading={loading}
               style={{
                 margin: "20px auto",
                 display: data && hasMore ? "block" : "none",
@@ -123,9 +137,9 @@ const IndexPage = () => {
           </div>
         }
         endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
-        scrollableTarget="scrollableDiv"
       >
         <List<Repository>
+          className={"repo-list"}
           loading={loading}
           itemLayout="horizontal"
           dataSource={(data?.search.nodes as Repository[]) || []}
