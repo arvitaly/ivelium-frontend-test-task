@@ -23,6 +23,7 @@ const RepoHeader = ({
         whiteSpace: "nowrap",
         display: "flex",
         alignItems: "center",
+        gap: "20px",
       }}
     >
       <div
@@ -30,7 +31,7 @@ const RepoHeader = ({
           display: "flex",
           gap: "7px",
           alignItems: "center",
-          maxWidth: "calc(100% - 200px)",
+          minWidth: 0,
         }}
       >
         <Avatar src={avatar} style={{ flex: 1, maxWidth: "30px" }} />
